@@ -67,30 +67,42 @@
       padding: 15px 17px;
       font-weight: 700;
       font-size: 16px;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+      animation: fadeUp .5s ease both;
     }
     .link:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.01);
       border-color: #ff9d00;
-      box-shadow: 0 8px 20px rgba(0,0,0,.08);
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
     }
     .icon {
-      width: 40px; height: 40px;
-      border-radius: 11px;
+      width: 28px;
+      height: 28px;
       display: grid;
       place-items: center;
-      font-size: 21px;
-      flex: 0 0 40px;
+      flex: 0 0 28px;
+      transition: transform .25s ease;
     }
-    .icon svg {
-      width: 22px;
-      height: 22px;
+    .link:hover .icon {
+      transform: scale(1.12) rotate(-2deg);
+    }
+    .icon svg,
+    .icon img {
+      width: 26px;
+      height: 26px;
       display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 5px rgba(0,0,0,.08));
     }
-    .site .icon { background: #fff0d2; }
-    .insta .icon { background: #fbe2ed; }
-    .whatsapp .icon { background: #e0f6e7; }
-    .tiktok .icon { background: #e9e9eb; }
+    .site .icon,
+    .insta .icon,
+    .whatsapp .icon,
+    .tiktok .icon {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
     .arrow { margin-left: auto; color: #9a9a9a; font-size: 21px; }
     .contact {
       margin-top: 20px;
@@ -127,19 +139,24 @@
       border: 1.5px solid #e8e5dc;
       border-radius: 14px;
       padding: 10px 12px;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .product-icon {
-      width: 42px;
-      height: 42px;
+    .product:hover {
+      transform: translateY(-2px);
+      border-color: #ff9d00;
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
+    .product-image {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
       border-radius: 12px;
-      display: grid;
-      place-items: center;
-      font-size: 22px;
       flex-shrink: 0;
+      border: 1px solid #f0ede7;
+      background: #ffffff;
+      padding: 4px;
     }
-    .product:nth-child(1) .product-icon { background: #fff0d2; }
-    .product:nth-child(2) .product-icon { background: #e7f4ff; }
-    .product:nth-child(3) .product-icon { background: #e9f7e6; }
     .product-info {
       display: flex;
       flex-direction: column;
@@ -165,12 +182,132 @@
       text-transform: uppercase;
       letter-spacing: .4px;
     }
+    .product-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 24, 39, 0.52);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .25s ease, visibility .25s ease;
+      z-index: 20;
+    }
+    .product-modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .product-modal-card {
+      width: min(420px, 100%);
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,.18);
+      border: 1px solid #f0eadc;
+      transform: translateY(18px) scale(.96);
+      transition: transform .25s ease;
+    }
+    .product-modal.open .product-modal-card {
+      transform: translateY(0) scale(1);
+    }
+    .product-modal-image {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      display: block;
+      background: #ffffff;
+      padding: 12px;
+    }
+    .product-modal-content {
+      padding: 20px 18px 18px;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .modal-header h3 {
+      font-size: 22px;
+      color: #17202b;
+      line-height: 1.2;
+    }
+    .close-modal {
+      border: none;
+      background: #f3f0eb;
+      color: #17202b;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .product-modal-content p {
+      color: #5d6570;
+      line-height: 1.6;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .modal-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: #344054;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .modal-status {
+      background: #fff4d6;
+      color: #9a5a00;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+    }
+    .whatsapp-order {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-weight: 700;
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .whatsapp-order:hover {
+      transform: translateY(-1px);
+      filter: brightness(0.97);
+    }
+    .whatsapp-order .wa-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
     .footer {
       margin-top: 16px;
       font-size: 12px;
       color: #8b8b8b;
     }
     .footer span { color: #f59a00; }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -183,10 +320,7 @@
       <div class="links">
         <a class="link site" href="https://mk-quincaillerie.vercel.app/" target="_blank" rel="noopener">
           <span class="icon" aria-label="Site web">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" stroke="#1C2A39" stroke-width="1.8"/>
-              <path d="M3 12H21M12 3C14.8 5.5 16.2 8.6 16.2 12C16.2 15.4 14.8 18.5 12 21C9.2 18.5 7.8 15.4 7.8 12C7.8 8.6 9.2 5.5 12 3Z" stroke="#1C2A39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <img src="emoji/site-internet.png" alt="Site web">
           </span>
           <span>Notre site web</span>
           <span class="arrow">›</span>
@@ -194,11 +328,7 @@
 
         <a class="link insta" href="https://www.instagram.com/mkquincaillerie/" target="_blank" rel="noopener">
           <span class="icon" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="#1C2A39" stroke-width="1.8"/>
-              <circle cx="12" cy="12" r="4" stroke="#1C2A39" stroke-width="1.8"/>
-              <circle cx="17.3" cy="6.7" r="1.3" fill="#1C2A39"/>
-            </svg>
+            <img src="emoji/instagram.png" alt="Instagram">
           </span>
           <span>Instagram</span>
           <span class="arrow">›</span>
@@ -206,10 +336,7 @@
 
         <a class="link whatsapp" href="https://wa.me/212770429282" target="_blank" rel="noopener">
           <span class="icon" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M20 12.1C20 16.3 16.3 19.8 12 19.8C10.4 19.8 8.9 19.3 7.6 18.4L4 20L5.8 16.6C4.8 15.2 4.2 13.7 4.2 12.1C4.2 7.9 7.9 4.2 12 4.2C16.1 4.2 20 7.9 20 12.1Z" fill="#25D366"/>
-              <path d="M15.7 13.8C15.5 13.7 14.3 13.1 14.1 13.1C13.9 13 13.8 13 13.7 13.2C13.6 13.4 13.1 13.9 13 14.1C12.9 14.3 12.8 14.3 12.6 14.2C12.1 14 11.6 13.7 11.1 13.3C10.7 12.9 10.3 12.4 10.1 11.9C10 11.7 10.1 11.6 10.3 11.5C10.4 11.4 10.5 11.3 10.6 11.2C10.7 11.1 10.7 11 10.8 10.9C10.9 10.7 10.8 10.6 10.7 10.5C10.6 10.4 10.1 9.2 9.9 8.8C9.8 8.6 9.6 8.6 9.5 8.6H9.1C9 8.6 8.8 8.6 8.6 8.8C8.4 9 7.8 9.7 7.8 10.9C7.8 12.1 8.7 13.2 8.8 13.4C8.9 13.6 10.3 15.6 12.3 16.5C14.3 17.3 14.3 16.9 14.8 16.9C15.3 16.9 16.2 16.4 16.4 15.9C16.6 15.4 16.6 15 16.5 14.9C16.4 14.8 16.1 14.7 15.7 13.8Z" fill="white"/>
-            </svg>
+            <span style="font-size:22px; line-height:1;">💬</span>
           </span>
           <span>WhatsApp — 0770 42 92 82</span>
           <span class="arrow">›</span>
@@ -217,9 +344,7 @@
 
         <a class="link tiktok" href="https://www.tiktok.com/@mkquincaillerie1" target="_blank" rel="noopener">
           <span class="icon" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M15.7 4.5C16.8 5.9 18.4 6.7 20 6.8V9.5C18.3 9.5 16.7 9 15.4 7.8V14C15.4 16.9 13.1 19.2 10.1 19.2C7.1 19.2 4.8 16.9 4.8 14C4.8 11.1 7.1 8.8 10.1 8.8C10.6 8.8 11.1 8.9 11.6 9.1V12C11 11.7 10.5 11.6 10 11.6C8.6 11.6 7.5 12.7 7.5 14.1C7.5 15.5 8.6 16.6 10 16.6C11.4 16.6 12.5 15.5 12.5 14.1V4.5H15.7Z" fill="#111827"/>
-            </svg>
+            <img src="emoji/tic-tac.png" alt="TikTok">
           </span>
           <span>TikTok</span>
           <span class="arrow">›</span>
@@ -235,29 +360,29 @@
     <section class="best-products" aria-label="Best products">
       <h2>Best Products</h2>
       <div class="products">
-        <div class="product">
-          <div class="product-icon">🔧</div>
+        <div class="product" data-name="Adhésif Tytan Fast" data-image="porducts/adhesif-tytan-fast.jpg" data-type="Adhésif" data-description="Adhésif haute résistance pour fixation rapide et durable dans les travaux de construction et de rénovation." data-status="Best">
+          <img class="product-image" src="porducts/adhesif-tytan-fast.jpg" alt="Adhésif Tytan Fast">
           <div class="product-info">
-            <strong>Outillage Pro</strong>
-            <span>Outils de précision</span>
+            <strong>Adhésif Tytan Fast</strong>
+            <span>Fixation rapide</span>
           </div>
           <span class="product-tag">Best</span>
         </div>
 
-        <div class="product">
-          <div class="product-icon">🧰</div>
+        <div class="product" data-name="Cheville Chimique" data-image="porducts/cheville-chimique.jpg" data-type="Fixation" data-description="Cheville chimique ultra fiable pour un maintien solide dans les supports exigeants et les applications de maçonnerie." data-status="Top">
+          <img class="product-image" src="porducts/cheville-chimique.jpg" alt="Cheville chimique">
           <div class="product-info">
-            <strong>Matériel Bâtiment</strong>
-            <span>Pour travaux maison</span>
+            <strong>Cheville Chimique</strong>
+            <span>Résistance renforcée</span>
           </div>
           <span class="product-tag">Top</span>
         </div>
 
-        <div class="product">
-          <div class="product-icon">🧴</div>
+        <div class="product" data-name="Mousse Coupe Feu" data-image="porducts/mousse-coupe-feu-firetop.jpg" data-type="Sécurité" data-description="Mousse coupe-feu Firetop pour protéger les joints et les zones sensibles contre les risques d’incendie." data-status="Pop">
+          <img class="product-image" src="porducts/mousse-coupe-feu-firetop.jpg" alt="Mousse coupe feu Firetop">
           <div class="product-info">
-            <strong>Droguerie Essentielle</strong>
-            <span>Produits utiles</span>
+            <strong>Mousse Coupe Feu</strong>
+            <span>Protection incendie</span>
           </div>
           <span class="product-tag">Pop</span>
         </div>
@@ -266,5 +391,73 @@
 
     <div class="footer">© MK Quincaillerie <span>•</span> Tous droits réservés</div>
   </main>
+
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <div class="product-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <img class="product-modal-image" id="modalImage" src="" alt="Produit sélectionné">
+      <div class="product-modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle">Produit</h3>
+          <button class="close-modal" type="button" aria-label="Fermer">×</button>
+        </div>
+        <div class="modal-meta">
+          <span id="modalType">Catégorie</span>
+          <span class="modal-status" id="modalStatus">Best</span>
+        </div>
+        <p id="modalDescription">Description du produit.</p>
+        <a class="whatsapp-order" id="whatsappOrder" href="#" target="_blank" rel="noopener"><span class="wa-icon">💬</span> Commander via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('productModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalType = document.getElementById('modalType');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalStatus = document.getElementById('modalStatus');
+    const modalImage = document.getElementById('modalImage');
+    const whatsappOrder = document.getElementById('whatsappOrder');
+    const closeModalButton = document.querySelector('.close-modal');
+
+    document.querySelectorAll('.product').forEach((product) => {
+      product.addEventListener('click', () => {
+        const name = product.dataset.name;
+        const type = product.dataset.type;
+        const description = product.dataset.description;
+        const status = product.dataset.status;
+        const image = product.dataset.image;
+
+        modalTitle.textContent = name;
+        modalType.textContent = type;
+        modalDescription.textContent = description;
+        modalStatus.textContent = status;
+        modalImage.src = image;
+        modalImage.alt = name;
+
+        const message = encodeURIComponent(`Bonjour MK Quincaillerie, je souhaite commander : ${name}.`);
+        whatsappOrder.href = `https://wa.me/212770429282?text=${message}`;
+
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    closeModalButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
