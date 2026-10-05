@@ -6,6 +6,6 @@
   { "id": 5, "name": "Plomberie", "slug": "plomberie", "description": "Raccordement et équipement sanitaire", "icon": "Droplet", "image": "/images/catalog/plomberie.jpg" },
   { "id": 6, "name": "Équipements de protection", "slug": "protection", "description": "Protection individuelle et sécurité", "icon": "ShieldCheck", "image": "/images/catalog/protection.jpg" },
   { "id": 7, "name": "Matériel de chantier", "slug": "materiel-chantier", "description": "Équipement pour le terrain", "icon": "HardHat", "image": "/images/catalog/chantier.jpg" },
-  { "id": 8, "name": "Peinture & accessoires", "slug": "peinture", "description": "Préparation et finition des surfaces", "icon": "Paintbrush", "image": "/images/catalog/peinture.jpg" },
+  { "id": 8, "name": "Peinture & accessoires", "slug": "peinture", "description": "Préparation et finition des surfaces", "icon": "Paintbrush", "image": "/images/catalog/peinture.jpg", "featured": true },
   { "id": 9, "name": "Silicone & étanchéité", "slug": "silicone", "description": "Silicones, mastics, mousses PU, colles et solutions d'étanchéité", "icon": "Droplet", "image": "/images/products/silicone/silicone-neutre-transparent.jpg" }
 ]
