@@ -1,11 +1,17 @@
-import { lazy, Suspense, useState } from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { lazy, Suspense, useEffect, useState } from 'react'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { ArrowUpRight, Menu, Search, X } from 'lucide-react'
 import { motion } from 'framer-motion'
 import store from '../data/store.json'
 import { buildWhatsAppUrl } from '../utils/catalog.js'
 
 const MapSection = lazy(() => import('./MapSection.jsx'))
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }) }, [pathname])
+  return null
+}
 
 const navigation = [
   ['Produits', '/produits'],
@@ -15,17 +21,18 @@ const navigation = [
 ]
 
 export default function SiteLayout() {
+
   const [menuOpen, setMenuOpen] = useState(false)
   const whatsapp = buildWhatsAppUrl('Bonjour MK Quincaillerie, je souhaite obtenir des renseignements.')
 
   return (
     <>
+      <ScrollToTop />
       <div className="topline">{store.tagline}<span>CASABLANCA · MAROC</span></div>
       <header className="site-header">
         <div className="header-inner">
-          <Link className="brand" to="/" aria-label="MK Quincaillerie, accueil">
-            <span className="brand-mark">MK<span>.</span></span>
-            <span className="brand-name">QUINCAILLERIE<small>OUTILLAGE & CHANTIER</small></span>
+          <Link className="brand-logo" to="/" aria-label="MK Quincaillerie, accueil">
+            <img src="/images/logo-mk-dark.jpg" alt="MK Quincaillerie" className="header-logo-img" />
           </Link>
           <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Navigation principale">
             {navigation.map(([label, to]) => <NavLink key={to} to={to} onClick={() => setMenuOpen(false)}>{label}</NavLink>)}
@@ -43,7 +50,9 @@ export default function SiteLayout() {
       <footer className="site-footer">
         <div className="footer-main wrap">
           <div className="footer-brand-block">
-            <Link className="brand brand-light" to="/"><span className="brand-mark">MK<span>.</span></span><span className="brand-name">QUINCAILLERIE<small>OUTILLAGE & CHANTIER</small></span></Link>
+            <Link className="brand-logo" to="/" aria-label="MK Quincaillerie">
+              <img src="/images/logo-mk.jpg" alt="MK Quincaillerie" className="footer-logo-img" />
+            </Link>
             <p>{store.tagline}</p>
           </div>
           <div className="footer-column"><h2>Explorer</h2><Link to="/produits">Produits</Link><Link to="/categories">Catégories</Link><Link to="/a-propos">À propos</Link><Link to="/contact">Contact</Link></div>

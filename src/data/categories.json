@@ -1,11 +1,12 @@
 [
-  { "id": 1, "name": "Outillage électroportatif", "slug": "outillage-electroportatif", "description": "Perçage, découpe et ponçage", "icon": "Drill", "image": "/images/catalog/perceuse.jpg" },
-  { "id": 2, "name": "Outillage à main", "slug": "outillage-main", "description": "Les outils essentiels du quotidien", "icon": "Hammer", "image": "/images/catalog/visserie.jpg" },
-  { "id": 3, "name": "Quincaillerie & fixation", "slug": "quincaillerie", "description": "Visserie, ancrage et assemblage", "icon": "Wrench", "image": "/images/catalog/visserie.jpg" },
-  { "id": 4, "name": "Électricité", "slug": "electricite", "description": "Matériel et accessoires électriques", "icon": "Zap", "image": "/images/catalog/electricite.jpg" },
-  { "id": 5, "name": "Plomberie", "slug": "plomberie", "description": "Raccordement et équipement sanitaire", "icon": "Droplet", "image": "/images/catalog/plomberie.jpg" },
-  { "id": 6, "name": "Équipements de protection", "slug": "protection", "description": "Protection individuelle et sécurité", "icon": "ShieldCheck", "image": "/images/catalog/protection.jpg" },
+  { "id": 1, "name": "Outillage électroportatif", "slug": "outillage-electroportatif", "description": "Perçage, découpe et ponçage", "icon": "Drill", "image": "/images/catalog/perceuse.jpg", "featured": true },
+  { "id": 2, "name": "Outillage à main", "slug": "outillage-main", "description": "Les outils essentiels du quotidien", "icon": "Hammer", "image": "/images/catalog/visserie.jpg", "featured": true },
+  { "id": 3, "name": "Quincaillerie & fixation", "slug": "quincaillerie", "description": "Visserie, ancrage et assemblage", "icon": "Wrench", "image": "/images/catalog/visserie.jpg", "featured": true },
+  { "id": 4, "name": "Électricité", "slug": "electricite", "description": "Matériel et accessoires électriques", "icon": "Zap", "image": "/images/catalog/electricite.jpg", "featured": true },
+  { "id": 5, "name": "Plomberie", "slug": "plomberie", "description": "Raccordement et équipement sanitaire", "icon": "Droplet", "image": "/images/catalog/plomberie.jpg", "featured": true },
+  { "id": 6, "name": "Équipements de protection", "slug": "protection", "description": "Protection individuelle et sécurité", "icon": "ShieldCheck", "image": "/images/catalog/protection.jpg", "featured": true },
   { "id": 7, "name": "Matériel de chantier", "slug": "materiel-chantier", "description": "Équipement pour le terrain", "icon": "HardHat", "image": "/images/catalog/chantier.jpg" },
   { "id": 8, "name": "Peinture & accessoires", "slug": "peinture", "description": "Préparation et finition des surfaces", "icon": "Paintbrush", "image": "/images/catalog/peinture.jpg", "featured": true },
-  { "id": 9, "name": "Silicone & étanchéité", "slug": "silicone", "description": "Silicones, mastics, mousses PU, colles et solutions d'étanchéité", "icon": "Droplet", "image": "/images/products/silicone/silicone-neutre-transparent.jpg" }
+  { "id": 9, "name": "Silicone & étanchéité", "slug": "silicone", "description": "Silicones, mastics, mousses PU, colles et solutions d'étanchéité", "icon": "Droplet", "image": "/images/products/silicone/silicone-neutre-transparent.jpg" },
+  { "id": 10, "name": "Meuleuse", "slug": "meuleuse", "description": "Meuleuses et accessoires de meulage", "icon": "Wrench", "image": "/images/products/meuleuse/meuleuse-dewalt-115mm-730w-1.png" }
 ]

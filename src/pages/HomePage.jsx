@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import products from '../data/products.json'
 import categories from '../data/categories.json'
 import reviews from '../data/reviews.json'
-import { ProductGrid, CategoryList, SectionHeading, TrustLine } from '../components/Storefront.jsx'
+import { ProductGrid, SectionHeading, TrustLine } from '../components/Storefront.jsx'
+import { FeaturedCarousel } from '../components/FeaturedCarousel.jsx'
 import { useSeo } from '../utils/seo.js'
 
 export function HomePage() {
   useSeo('Outillage, quincaillerie & équipement à Casablanca', 'Outillage, quincaillerie et équipements pour vos chantiers. Découvrez le catalogue MK Quincaillerie et demandez votre devis.')
   const [reviewIndex, setReviewIndex] = useState(0)
-  const featured = products.filter((product) => product.featured).slice(0, 4)
+  const featured = products.filter((product) => product.featured).slice(-4)
+  const featuredCategories = categories.filter((category) => category.featured)
   const review = reviews[reviewIndex]
 
   return (
@@ -29,9 +31,19 @@ export function HomePage() {
       </section>
       <div className="trust-band wrap"><TrustLine /></div>
 
-      <section id="univers" className="section-block wrap">
-        <SectionHeading eyebrow="NOS UNIVERS" title="Pour chaque étape du chantier." text="Des essentiels du quotidien aux équipements spécialisés, retrouvez les familles de produits du magasin." link="/categories" linkLabel="Toutes les catégories" />
-        <CategoryList items={categories.slice(0, 6)} />
+      <section id="univers" className="carousel-section">
+        <div className="carousel-section-inner wrap">
+          <SectionHeading
+            eyebrow="PRODUITS VEDETTES"
+            title={<>Nos produits,<br /><em>en images.</em></>}
+            text="Découvrez notre sélection de produits disponibles en magasin — peinture, outillage et bien plus."
+            link="/produits"
+            linkLabel="Voir tout le catalogue"
+          />
+        </div>
+        <div className="carousel-section-track wrap">
+          <FeaturedCarousel />
+        </div>
       </section>
 
       <section className="featured-section">
